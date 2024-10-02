@@ -43,7 +43,6 @@ public class Board extends JPanel{
 							if(cell.getValue().equals(Cell.EMTY_VALUE)) {
 								cell.setValue(currentPlayer);
 								currentPlayer = currentPlayer.equals(Cell.BLACK_VALUE) ? Cell.WHITE_VALUE : Cell.BLACK_VALUE;
-								System.out.println(currentPlayer);
 								repaint();
 							}
 						}
@@ -60,38 +59,35 @@ public class Board extends JPanel{
 	}
 	@Override
 	public void paint(Graphics g) {
-		int w = getWidth()/size;
-		int h = getHeight()/size;
+		int w = 300/size;
+		int h = 300/size;
 		Graphics2D gra = (Graphics2D) g;
 	    gra.setColor(new Color(139, 69, 19)); // RGB for brown
 	    gra.fillRect(0, 0, getWidth(), getHeight());
+	    for (int i = 0; i < size; i++) {
+			gra.setColor(Color.BLACK);
+			gra.drawLine(i * w+20, 20, i * w+20, 283);
+			gra.drawLine(20, i * w+20, 284, i * w+20);
+		}
 		int k = 0;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				int x = j*w-w/2;
-				int y = i*h-h/2;
+				int x = j*w-w/2+20;
+				int y = i*h-h/2+20;
 				Cell cell = matrix[i][j];
 				cell.setX(x);
 				cell.setY(y);
 				cell.setW(w);
 				cell.setH(h);
-				gra.setColor(Color.BLACK);
-				gra.drawLine(i * w, 0, i * w, getWidth());
-				gra.drawLine(0, i * w, getHeight(), i * w);
-//				Color color = k%2 == 0 ? Color.BLUE : Color.RED;
-//				gra.setColor(color);
-//				gra.fillRect(x, y, w, h);
 				if(cell.getValue().equals(Cell.BLACK_VALUE)) {
 					gra.drawImage(imgDen, x,y,w,h,this);
 				}else if(cell.getValue().equals(Cell.WHITE_VALUE)) {
 					gra.drawImage(imgTrang, x,y,w,h,this);
 				}
-//				Image img = k%2 == 0 ? imgDen:imgTrang;
-//				gra.drawImage(img, x,y,w,h,this);
-//				k++;
+
 			}
 		}
-		
+		setSize(320,320);
 		
 	}
 
