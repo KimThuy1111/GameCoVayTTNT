@@ -1,4 +1,4 @@
-package covay;
+package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,6 +10,8 @@ import java.awt.event.MouseListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+import model.Cell;
 
 public class Board extends JPanel{
 	private int size = 9;
