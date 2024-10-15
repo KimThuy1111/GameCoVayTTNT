@@ -21,20 +21,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class View extends JFrame{
-	 static Image logo;
-	 static JLabel scoreLabel;
-	 static JButton newGame,back,role,exit;
+	 private Image logo;
+	 private JLabel scoreLabel;
+	 private JButton newGame,back,role,exit;
+	 private BanCo banCo;
 	public View() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 	    gbc.fill = GridBagConstraints.HORIZONTAL;
 		
-		Board broad = new Board();
-		broad.setPreferredSize(new Dimension(500,500));
+		banCo = new BanCo();
 		gbc.ipadx=350;
 		gbc.ipady=300;
-		panel.add(broad,gbc);
+		panel.add(banCo,gbc);
 		
 		try {
 			logo = ImageIO.read(getClass().getResource("LG.png"));
@@ -78,42 +78,45 @@ public class View extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 	}
-	public static Image getLogo() {
-		return logo;
-	}
-	public static void setLogo(Image logo) {
-		View.logo = logo;
-	}
-	public static JLabel getScoreLabel() {
+
+	public  JLabel getScoreLabel() {
 		return scoreLabel;
 	}
-	public static void setScoreLabel(JLabel scoreLabel) {
-		View.scoreLabel = scoreLabel;
+	public void setScoreLabel(JLabel scoreLabel) {
+		scoreLabel = scoreLabel;
 	}
-	public static JButton getNewGame() {
+	public JButton getNewGame() {
 		return newGame;
 	}
-	public static void setNewGame(JButton newGame) {
-		View.newGame = newGame;
+	public void setNewGame(JButton newGame) {
+		newGame = newGame;
 	}
-	public static JButton getBack() {
+	public JButton getBack() {
 		return back;
 	}
-	public static void setBack(JButton back) {
-		View.back = back;
+	public void setBack(JButton back) {
+		back = back;
 	}
-	public static JButton getRole() {
+	public JButton getRole() {
 		return role;
 	}
-	public static void setRole(JButton role) {
-		View.role = role;
+	public void setRole(JButton role) {
+		role = role;
 	}
-	public static JButton getExit() {
+	public JButton getExit() {
 		return exit;
 	}
-	public static void setExit(JButton exit) {
-		View.exit = exit;
+	public void setExit(JButton exit) {
+		exit = exit;
 	}
+	public BanCo getBanCo() {
+		return banCo;
+	}
+
+	public void setBanCo(BanCo banCo) {
+		this.banCo = banCo;
+	}
+
 	public static void main(String[] args) {
 		new View();
 	}

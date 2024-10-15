@@ -1,31 +1,34 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import model.Cell;
+import controller.CellClickListener;
 
-public class Board extends JPanel{
+public class BanCo extends JPanel{
 	private int size = 9;
 	private Image imgDen;
 	private Image imgTrang;
 	private Cell[][] matrix = new Cell[size][size];
 	private String currentPlayer = Cell.BLACK_VALUE;
-	public Board() {
+	public BanCo() {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				Cell cell = new Cell();
 				matrix[i][j] = cell;
 			}
 		}
+		
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -59,12 +62,42 @@ public class Board extends JPanel{
 			e1.printStackTrace();
 		}
 	}
+	public int getBSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public Image getImgDen() {
+		return imgDen;
+	}
+	public void setImgDen(Image imgDen) {
+		this.imgDen = imgDen;
+	}
+	public Image getImgTrang() {
+		return imgTrang;
+	}
+	public void setImgTrang(Image imgTrang) {
+		this.imgTrang = imgTrang;
+	}
+	public Cell[][] getMatrix() {
+		return matrix;
+	}
+	public void setMatrix(Cell[][] matrix) {
+		this.matrix = matrix;
+	}
+	public String getCurrentPlayer() {
+		return currentPlayer;
+	}
+	public void setCurrentPlayer(String currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
 	@Override
 	public void paint(Graphics g) {
 		int w = 300/size;
 		int h = 300/size;
 		Graphics2D gra = (Graphics2D) g;
-	    gra.setColor(new Color(139, 69, 19)); // RGB for brown
+	    gra.setColor(new Color(222,184,135)); // RGB for brown
 	    gra.fillRect(0, 0, getWidth(), getHeight());
 	    for (int i = 0; i < size; i++) {
 			gra.setColor(Color.BLACK);
@@ -90,8 +123,8 @@ public class Board extends JPanel{
 			}
 		}
 		setSize(320,320);
-		
 	}
+
 
 	
 

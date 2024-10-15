@@ -1,4 +1,4 @@
-package model;
+package view;
 
 public class Cell {
 	private int x;
@@ -12,6 +12,16 @@ public class Cell {
 	public Cell() {
 		value = "";
 	}
+	
+	public Cell(int x, int y, int w, int h, String value) {
+		super();
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		this.value = value;
+	}
+
 	public int getX() {
 		return x;
 	}
